@@ -2,6 +2,9 @@ cmake_minimum_required(VERSION 3.6)
 set(PROJECT_NAME "serialport")
 project(${PROJECT_NAME} LANGUAGES C)
 
+#Ensure 16KB alignment for Android store
+set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,-z,max-page-size=0x4000")
+
 set(SOURCE_PATH "../../third_party/libserialport")
 
 add_library(${PROJECT_NAME} SHARED
